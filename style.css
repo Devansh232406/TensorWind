@@ -1,0 +1,300 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Poppins;
+}
+
+body{
+    height: auto;
+}
+html{
+    scroll-behavior: smooth;
+}
+nav{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 35px;
+    width:100%;
+    color: aliceblue;
+}
+
+.hero-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 140vh;
+    width: 100%;
+    color: aliceblue;
+}
+
+.hero-middle{
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center ;
+}
+
+.content-right{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Increased font size */
+    height: 140%;
+    width: 40%;
+    margin-top: 6rem;
+    margin-right: 3rem;
+    animation: moveLeft 2s ease-in-out;
+}
+.just-for-column{
+    height: fit-content;
+    width:35rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+ 
+}
+.tabs {
+    transform: translateY(27px);
+    margin-top: 1rem;
+    height: 22%;
+    border-radius: 34px;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(150, 95, 244, 0.107); /* Soft purple */
+    backdrop-filter: blur(5px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Optional: adds depth */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+   
+}
+.tab1{
+    height: 10px;
+    border-right:1px solid rgba(255, 255, 255, 0.674);
+}
+.tab3{
+    border-left: 1px solid rgba(255, 255, 255, 0.713);
+}
+.tab-headers{
+    font-size: 17px;
+}
+.h{
+    margin-top: 10px;
+    color: #dcddff;
+}
+.t{    
+    height:70%;
+    width: 9.8rem; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.hero-bg {
+  height: 140vh;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+  transition: background-image 1s ease-in-out;
+}
+.cloud{
+    height: auto;
+    width: 2.0rem;
+    margin-top: 5px;
+}
+
+#wSym{
+    margin-right: 10px;
+}
+.hero-bg.day {
+  background-image:linear-gradient(to bottom,rgba(7, 0, 87, 0.165),rgba(50, 0, 130, 0.312),rgba(7, 106, 245, 0.487)), url('assets/hero-image-day.jpg');
+}
+
+.hero-bg.night {
+  background-image:linear-gradient(to top,rgb(108, 0, 223),rgba(7, 0, 87, 0),rgba(7, 0, 87, 0),rgba(0, 0, 0, 0.41)), url('assets/hero-image-night.jpg');
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+input{
+    padding: 0.5rem 7rem 0.5rem 1rem;
+    border: 0;
+    outline: 0;
+    border-radius: 30px;
+    z-index: 100;
+}
+.search-bar{
+    z-index: 100;
+    animation: moveDown 2.4s ease-in-out;
+}
+.C{
+    display: inline-block;
+    transform: translateX(-3rem);
+}
+
+button{
+    border-radius: 100%;
+    transform: translateX(-40px);
+    padding: 0.5rem;
+    border: 0;
+    outline: 0;
+    margin-right: 3rem;
+    background-color: #ffffff;
+}
+.air-quality{
+    font-size: 1.4rem;
+    font-weight: 270 ;
+}
+.celc{
+    font-size: 10.9rem;
+    text-align: left;
+    height: fit-content;
+    transform: translateY(20px);
+}
+.celc,.C,.degree{
+    background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(107, 188, 255)); /* Your gradient */
+    background-clip: text; /* Clip the background to the text */
+    -webkit-text-fill-color: transparent; /* Hide actual text color */
+}
+.weather-box-section2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    height: 50px;
+    
+
+}
+.time{
+    font-size: 1.6rem;
+    font-weight: 270;
+    margin-right: 3.5rem;
+}
+.time-emoji{
+    height: auto;
+    width:1.6rem;
+    transform: translateY(4px);
+}
+.weather-box {
+    text-align: left;
+    width: fit-content; /* optional: to prevent stretching */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    transform: translateX(-16px);
+    animation: moveRight 2.4s ease-in-out;
+}
+.city{
+  font-size: 1.6rem;
+  font-weight: 270 ;
+  transform: translateY(-16px);
+}
+#weather-type{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 270;
+}
+.degree {
+  font-size: 6rem;
+  display: inline-block;
+  transform: translateX(-50px) translateY(-90px);
+  color: black;
+}
+
+/* Add position: relative to the parent container of span, for example: */
+.hero-middle {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ /* Added to ensure absolute children are positioned correctly */
+}
+.content-left{
+    position: relative;
+    margin-top: 5rem;
+    margin-left: 7rem;
+}
+.container{
+    height:100vh;
+    background-color: aliceblue;
+    width:100%
+}
+
+svg{
+    margin-bottom: -1px;
+}
+
+.logo-day{
+    margin-left:6.6rem;
+    font-size: 2rem;
+    background: linear-gradient(to right, #ffffff, #00c3ff); /* Your gradient */
+    -webkit-background-clip: text; /* Clip the background to the text */
+    background-clip: text; /* Standard property for compatibility */
+    -webkit-text-fill-color: transparent; /* Hide actual text color */
+    animation: moveDown 2.4s ease-out;
+}
+.logo-night{
+    margin-left:6.6rem;
+    font-size: 2rem;
+    background: linear-gradient(to right, #b08cff, #7500fa); /* Your gradient */
+    -webkit-background-clip: text; /* Clip the background to the text */
+    background-clip: text; /* Standard property for compatibility */
+    -webkit-text-fill-color: transparent; /* Hide actual text color */ 
+    animation: moveDown 2.4s ease-out;
+}
+
+
+
+/* ---------------------------------Animations----------------------------------------- */
+@keyframes moveRight{
+    from{
+       opacity:0;
+       transform: translateX(-200px);
+    }
+    to{
+       opacity:100%;
+    }
+}
+@keyframes moveDown{
+    from{
+       opacity:0;
+       transform: translateY(-100px);
+    }
+    to{
+       opacity:100%;
+    }
+}
+@keyframes moveLeft{
+    from{
+       opacity:0;
+       transform: translateX(200px);
+    }
+    to{
+       opacity:100%;
+    }
+}
+/* ---------------------------------Animations----------------------------------------- */
+
