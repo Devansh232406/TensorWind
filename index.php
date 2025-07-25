@@ -1,7 +1,7 @@
 <?php
 $weather = "";
 $error = "";
-$apiKey = "35e596c28521aee92625e9cab0e65cc5";
+$apiKey = getenv('OPENWEATHER_API_KEY');
 
 $city = isset($_GET['city']) ? $_GET['city'] : 'Jaipur'; // default to Jaipur
 $city = urlencode($city);
