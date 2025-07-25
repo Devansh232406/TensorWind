@@ -6,30 +6,18 @@ $apiKey = "35e596c28521aee92625e9cab0e65cc5";
 $city = isset($_GET['city']) ? $_GET['city'] : 'Jaipur'; // default to Jaipur
 $city = urlencode($city);
 
+
+
 // Step 1: Get Weather Data
 $url = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric";
 $response = file_get_contents($url);
 $data = json_decode($response, true);
 
 // Step 2: Extract Lat & Lon for AQI
-$lat = $data['coord']['lat'];
-$lon = $data['coord']['lon'];
+
 
 // Step 3: Get AQI Data
-$aqi_url = "https://api.openweathermap.org/data/2.5/air_pollution?lat=$lat&lon=$lon&appid=$apiKey";
-$aqi_response = file_get_contents($aqi_url);
-$aqi_data = json_decode($aqi_response, true);
 
-// Step 4: Air Quality Index Interpretation
-$aqi = $aqi_data['list'][0]['main']['aqi'];
-switch ($aqi) {
-    case 1: $airStatus = "Good"; break;
-    case 2: $airStatus = "Fair"; break;
-    case 3: $airStatus = "Moderate"; break;
-    case 4: $airStatus = "Poor"; break;
-    case 5: $airStatus = "Very Poor"; break;
-    default: $airStatus = "Unknown";
-}
 
 
  // Add this block after decoding the response
@@ -43,6 +31,31 @@ switch ($aqi) {
     
 
     if ($data["cod"] == 200) {
+      $lat = $data['coord']['lat'];
+      $lon = $data['coord']['lon'];
+
+      $forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=$city&appid=$apiKey&units=metric";
+      $forecastResponse = file_get_contents($forecastUrl);
+      $forecastData = json_decode($forecastResponse, true);
+      $hourly = $forecastData['list']; // 3-hour intervals
+
+
+
+      $aqi_url = "https://api.openweathermap.org/data/2.5/air_pollution?lat=$lat&lon=$lon&appid=$apiKey";
+      $aqi_response = file_get_contents($aqi_url);
+      $aqi_data = json_decode($aqi_response, true);
+
+      // Step 4: Air Quality Index Interpretation
+      $aqi = $aqi_data['list'][0]['main']['aqi'];
+      switch ($aqi) {
+        case 1: $airStatus = "Good"; break;
+        case 2: $airStatus = "Fair"; break;
+        case 3: $airStatus = "Moderate"; break;
+        case 4: $airStatus = "Poor"; break;
+        case 5: $airStatus = "Very Poor"; break;
+        default: $airStatus = "Unknown";
+      }
+
       $weather = "The weather in " . $data["name"] . " is " . $data["weather"][0]["description"] .
         ". Temperature: " . $data["main"]["temp"] . "°C. Humidity: " . $data["main"]["humidity"] . "%.";
       $celcius = intval($data["main"]["temp"]);   
@@ -167,9 +180,51 @@ $countryName = $countryNames[$countryCode] ?? $countryCode;
       </div>
     </div>
     <div class="container">
-        
-    </div>
+    <h2 id='forecast-header'>Hourly Forecast</h2>
+        <?php
+           // Show next 12 hours
+        echo "<div class='grid-section'>";
+for ($i = 0; $i < 8; $i++) { // 8 cards = 24 hours (3hr interval)
+    $hourData = $hourly[$i];
+    $time = date("g A", strtotime($hourData['dt_txt']));
+    $temp = round($hourData['main']['temp']);
+    $icon = $hourData['weather'][0]['icon'];
+    $iconUrl = "https://openweathermap.org/img/wn/$icon@4x.png";
 
+    echo "
+     <div class='hour-card'>
+        <p class='hourly-time'>$time</p>
+        <div class='icon'>
+           <img class='weather-icon' src='$iconUrl' alt='icon'>
+        </div>
+        <p id='card-temp'>$temp °C</p>
+     </div>";
+}
+echo "</div>";
+        ?>
+    
+    </div>
+    <footer>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="aliceblue" fill-opacity="1" d="M0,224L80,234.7C160,245,320,267,480,245.3C640,224,800,160,960,154.7C1120,149,1280,203,1360,229.3L1440,256L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
+      <div class="middle-div-footer">
+          <div class="team ft">
+            <h4>Team</h4>
+            <p>Devansh Joshi</p>
+            <p>Devang Bisartii</p>
+            <p>Dinesh Kumar</p>
+            <p>Devansh Fagna</p>
+          </div>
+          <div class="tools ft">
+            <h4>Services</h4>
+            <p>HTML</p>
+            <p>CSS</p>
+            <p>PHP</p>
+            <p>FontAwesome</p>
+            <p>GetWaves.io</p>
+          </div>
+      </div>
+      <p id='copy'>&copy; Copyright 2025-26 | All Rights Reserved</p>
+    </footer>
 
 
 </body>

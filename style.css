@@ -6,6 +6,7 @@
 
 body{
     height: auto;
+    overflow-x: hidden;
 }
 html{
     scroll-behavior: smooth;
@@ -237,11 +238,7 @@ button{
     margin-top: 5rem;
     margin-left: 7rem;
 }
-.container{
-    height:100vh;
-    background-color: aliceblue;
-    width:100%
-}
+
 
 svg{
     margin-bottom: -1px;
@@ -297,4 +294,115 @@ svg{
     }
 }
 /* ---------------------------------Animations----------------------------------------- */
+.container{
+    height:100vh;
+    background-color: aliceblue;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.grid-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);  /* 4 cards in a row */
+    grid-template-rows: repeat(2, 200px);    /* 2 rows */
+    gap: 15px;
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+    border-radius: 12px;
+    
+}
 
+.hour-card {
+    background-color: aliceblue;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all .2s ease-in-out;
+}
+.hourly-time{
+    color: rgb(130, 130, 130);
+}
+
+.hour-card:hover {
+  transform: scale(1.05);
+}
+.icon{
+    margin-top: 7px;
+    margin-bottom: 7px;
+    height:auto;
+    background-color: rgb(204, 204, 204);
+    border-radius: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#card-temp{
+    font-size: 2rem;
+    color: black;
+}
+
+.weather-icon {
+  width: 60px;
+  height: auto;
+}
+
+#forecast-header{
+  font-size: 2.4rem;
+  font-weight: 300;
+}
+
+footer{
+    height: 140vh;
+    width:100%;
+    background-color: #1f0073;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: #e6dbff;
+}
+.middle-div-footer{
+    height: 70vh;
+    width: 100%;
+    margin-bottom: 10vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+ 
+}
+
+.ft{
+   height: 50vh;
+   width:80vh;
+   background-color: #1f0073;
+   display: flex;
+   justify-content: flex-start;
+   align-items: flex-start;
+   flex-direction: column;
+   text-align: left;
+}
+
+.ft h4,.ft p{
+  margin-left: 25vh;
+}
+
+.ft h4{
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.ft p{
+    line-height: 40px;
+}
+
+#copy{
+    margin-bottom: 30px;
+}
