@@ -1,7 +1,10 @@
 <?php
 $weather = "";
 $error = "";
-$apiKey = getenv('OPENWEATHER_API_KEY');
+require_once __DIR__ . '/vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+$apiKey = $_ENV['OPENWEATHER_API_KEY'];
 
 $city = isset($_GET['city']) ? $_GET['city'] : 'Jaipur'; // default to Jaipur
 $city = urlencode($city);
