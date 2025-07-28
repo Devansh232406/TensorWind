@@ -16,12 +16,6 @@ $url = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&un
 $response = file_get_contents($url);
 $data = json_decode($response, true);
 
-// Step 2: Extract Lat & Lon for AQI
-
-
-// Step 3: Get AQI Data
-
-
 
  // Add this block after decoding the response
     $timestamp     = $data['dt'];
@@ -79,7 +73,8 @@ $data = json_decode($response, true);
     "JP" => "Japan",
     "BR" => "Brazil",
     "ZA" => "South Africa",
-    "AE"=>"UAE"
+    "AE"=>"UAE",
+    "EG"=>"Egypt"
     // Add more if needed
 ];
 
@@ -105,7 +100,9 @@ $countryName = $countryNames[$countryCode] ?? $countryCode;
     <div class="hero-bg <?php echo $isDay ? 'day' : 'night'; ?>">
       <nav>
         <h1 class='logo <?php echo $isDay ? 'logo-day' : 'logo-night'; ?>'>TensorWind</h1>
+         <p class="Date"><?php echo date("d M Y")?></p>
         <form method="get" class='search-bar'>
+           
             <input type="text" name="city" placeholder="Enter your city.." required>
             <button type="submit"><i class='fa-solid fa-magnifying-glass'></i></button>
         </form>
@@ -141,7 +138,7 @@ $countryName = $countryNames[$countryCode] ?? $countryCode;
 
       if ($mainWeather === "clear") {
         $weatherType = "<img class='cloud' src='/assets/sun.png'/>";
-        $mainWeather=' Sunny';
+        $mainWeather=' Mostly Clear';
       } elseif ($mainWeather === "clouds") {
         $weatherType = "<img class='cloud' src='/assets/cloud.jpg'/>";
         $mainWeather='Mostly Cloudy';
@@ -222,6 +219,7 @@ echo "</div>";
             <p>HTML</p>
             <p>CSS</p>
             <p>PHP</p>
+            <p>OpenWeather.API</p>
             <p>FontAwesome</p>
             <p>GetWaves.io</p>
           </div>

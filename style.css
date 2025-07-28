@@ -406,3 +406,10 @@ footer{
 #copy{
     margin-bottom: 30px;
 }
+
+.Date{
+    font-size: 1.2rem;
+    margin-left: 25rem;
+    font-weight: 300;
+    animation: moveDown 2.8s forwards;
+}
