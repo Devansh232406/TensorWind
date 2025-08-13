@@ -159,11 +159,11 @@ $data = json_decode($response, true);
                                 $mainWeather=' Rainy';
                             }
                             elseif ($mainWeather === "mist") {
-                                $weatherType = "<img class='cloud' src='/assets/rain.png'/>";
+                                $weatherType = "<i class='fa-solid fa-droplet'></i>";
                                 $mainWeather=' Mist';
                             }
                               elseif ($mainWeather === "haze") {
-                                $weatherType = "<img class='cloud' src='/assets/rain.png'/>";
+                                $weatherType = "<i class='fa-solid fa-smog'></i>";
                                 $mainWeather=' Haze';
                             }
 
