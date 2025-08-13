@@ -158,6 +158,14 @@ $data = json_decode($response, true);
                                 $weatherType = "<img class='cloud' src='/assets/rain.png'/>";
                                 $mainWeather=' Rainy';
                             }
+                            elseif ($mainWeather === "mist") {
+                                $weatherType = "<img class='cloud' src='/assets/rain.png'/>";
+                                $mainWeather=' Mist';
+                            }
+                              elseif ($mainWeather === "haze") {
+                                $weatherType = "<img class='cloud' src='/assets/rain.png'/>";
+                                $mainWeather=' Haze';
+                            }
 
                             echo "
                                 <div class='just-for-column'>
