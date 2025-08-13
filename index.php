@@ -1,13 +1,7 @@
 <?php
-require __DIR__ . '/vendor/autoload.php';
-
-// Load environment variables from .env
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
 $weather = "";
 $error = "";
-$apiKey = $_ENV['API_KEY']; 
+$apiKey = getenv('API_KEY'); 
 
 //Checking if the variable '$city' has a city name 
 $city = isset($_GET['city']) ? $_GET['city'] : 'Jaipur'; 
