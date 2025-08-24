@@ -1,7 +1,7 @@
 <?php
 $weather = "";
 $error = "";
-$apiKey = getenv('API_KEY'); 
+$apiKey = '35e596c28521aee92625e9cab0e65cc5'; 
 
 //Checking if the variable '$city' has a city name 
 $city = isset($_GET['city']) ? $_GET['city'] : 'Jaipur'; 
@@ -110,7 +110,7 @@ $data = json_decode($response, true);
 <body>
     <div class="hero-bg <?php echo $isDay ? 'day' : 'night'; ?>">
         <nav>
-            <h1 class='logo <?php echo $isDay ? 'logo-day' : 'logo-night'; ?>'>TensorWind</h1>
+            <h1 class='logo <?php echo $isDay ? 'logo-day' : 'logo-night'; ?>'>PHP Weather</h1>
             <p class="Date"><?php echo date("d M Y")?></p>
             <form method="get" class='search-bar'>
                 <input type="text" name="city" placeholder="Enter your city.." required>
@@ -145,7 +145,7 @@ $data = json_decode($response, true);
                             $weatherType = "Unknown";
     
 
-                           if ($mainWeather === "clear") {
+                            if ($mainWeather === "clear") {
                                 $weatherType = "<img class='cloud' src='/assets/sun.png'/>";
                                 $mainWeather=' Mostly Clear';
                             } 
